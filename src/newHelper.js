@@ -1,10 +1,9 @@
 const inquirer = require("inquirer");
+const { writeFile, readFile } = require("./file");
 
 let i = 1;
 
 exports.newHelper = () => {
-    console.log("ello")
-
     inquirer
         .prompt([
             {
@@ -41,7 +40,6 @@ const commandLoop = (answers) => {
                 const title = "command" + i;
                 answers[title] = command.command;
                 i++;
-                console.log("i", i)
                 commandLoop(answers);
             } else {
                 saveElements(answers);
@@ -54,6 +52,8 @@ const commandLoop = (answers) => {
 };
 
 const saveElements = (answers) => {
-    const title = answers.title;
-    delete answers.title;
+    // const title = answers.title;
+    // delete answers.title;
+    writeFile(JSON.stringify(answers));
+    readFile();
 }

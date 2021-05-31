@@ -1,4 +1,6 @@
-const currentWorkingDirectory = args[1].slice(0, -8);
+const currentWorkingDirectory = '';
+
+const fs = require('fs');
 
 exports.checkFileCreated = () => {
     if (fs.existsSync(currentWorkingDirectory +
@@ -9,16 +11,35 @@ exports.checkFileCreated = () => {
 }
 
 exports.readFile = () => {
+    this.checkFileCreated();
+
     let data = [];
 
-    // Read the data from file and convert
-    // it into string
     const fileData = fs
         .readFileSync(currentWorkingDirectory +
             'gitrem.txt').toString();
 
     data = fileData.split('\n');
-    let filterData = data.filter(function (value) {
+    return data.filter(function (value) {
         return value !== '';
     });
+}
+
+exports.writeFile = (newSequence) => {  
+    this.checkFileCreated();
+
+    const fileData = fs
+        .readFileSync(currentWorkingDirectory +
+            'gitrem.txt').toString();
+
+    // New task is added to previous data
+    fs.writeFile(
+        currentWorkingDirectory + 'gitrem.txt',
+        newSequence + '\n' + fileData,
+
+        function(err) {
+            if (err) throw err;
+            console.log('Added new question: "' + newSequence + '"');
+        },
+    );
 }
