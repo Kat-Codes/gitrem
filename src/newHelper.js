@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const { writeFile, readFile } = require("./file");
+const { readOne, readAll } = require("./readHelper");
 
 let i = 1;
 
@@ -52,8 +53,6 @@ const commandLoop = (answers) => {
 };
 
 const saveElements = (answers) => {
-    // const title = answers.title;
-    // delete answers.title;
     writeFile(JSON.stringify(answers));
-    readFile();
+    readAll();
 }

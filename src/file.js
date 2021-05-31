@@ -32,7 +32,6 @@ exports.writeFile = (newSequence) => {
         .readFileSync(currentWorkingDirectory +
             'gitrem.txt').toString();
 
-    // New task is added to previous data
     fs.writeFile(
         currentWorkingDirectory + 'gitrem.txt',
         newSequence + '\n' + fileData,

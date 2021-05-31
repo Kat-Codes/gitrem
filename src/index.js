@@ -3,6 +3,7 @@
 const chalk = require('chalk')
 const fs = require('fs');
 const { newHelper } = require('./newHelper');
+const { readAll } = require('./readHelper');
   
 const args = process.argv;
   
@@ -42,6 +43,7 @@ switch (args[2]) {
         newHelper()
         break
     case 'get':
+        readAll()
         break
     case 'list':
         break
