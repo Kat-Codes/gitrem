@@ -1,0 +1,16 @@
+{
+  "name": "gitrem",
+  "version": "1.0.0",
+  "description": "a cli helper tool for recalling sequences of git commands",
+  "main": "src/index.js",
+  "bin": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "lowdb": "^2.1.0"
+  }
+}
