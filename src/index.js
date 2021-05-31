@@ -2,21 +2,11 @@
 
 const chalk = require('chalk')
 const fs = require('fs');
+const { newHelper } = require('./newHelper');
   
 const args = process.argv;
   
-// The "index.js" is 8 characters long so -8
-// removes last 8 characters
-const currentWorkingDirectory = args[1].slice(0, -8);
-  
-  
-if (fs.existsSync(currentWorkingDirectory +
-        'todo.txt') === false) {
-    let createStream = fs.createWriteStream('githelper.txt');
-    createStream.end();
-}
-
-const usage = function () {
+const usage = () => {
     const usageText = `
     gitrem lets you save sequences of git commands for easy recall
   
@@ -34,7 +24,7 @@ const usage = function () {
     console.log(usageText)
 }
 
-function errorLog(error) {
+const errorLog = (error) => {
     const eLog = chalk.red(error)
     console.log(eLog)
 }
@@ -42,10 +32,6 @@ function errorLog(error) {
 if (args.length > 3) {
     errorLog(`only one argument can be accepted`)
     usage()
-}
-
-function newHelper() {
-    const q = chalk.blue('Type in your git commands\n')
 }
 
 switch (args[2]) {

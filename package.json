@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.1",
-    "lowdb": "^2.1.0"
+    "inquirer": "^8.1.0"
   }
 }
