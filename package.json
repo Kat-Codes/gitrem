@@ -2,14 +2,23 @@
   "name": "gitrem",
   "version": "1.0.0",
   "description": "a cli helper tool for recalling sequences of git commands",
+  "author": "Katie Walker (katcodes.co.uk)",
+
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
     "start": "node src/index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "inquirer": "^8.1.0"
+  },
+  "homepage": "https://github.com/Kat-Codes/gitrem#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kat-Codes/gitrem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kat-Codes/gitrem/issues"
   }
 }
