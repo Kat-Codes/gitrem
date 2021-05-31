@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const { readFile } = require("./file");
-const { log, errorlog, titlelog } = require("./utils/logs");
+const { errorlog, titlelog, loglist, log } = require("./utils/logs");
 
 
 exports.readAll = () => {
@@ -37,15 +37,19 @@ exports.readOne = (title) => {
         line = JSON.parse(line);
         if (line.title === title) {
             titlelog(title)
-            delete line.title;
+            const length = title.length;
+            log("~".repeat(length));
 
+            delete line.title;
             const commands = Object.values(line);
 
             let i = 1;
             commands.forEach((command) => {
-                log(i, command);
+                loglist(i, command);
                 i++;
             });
+            
+            log("~".repeat(length));
         }
     });
 }

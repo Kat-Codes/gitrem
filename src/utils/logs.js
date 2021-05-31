@@ -2,7 +2,7 @@ const chalk = require('chalk')
 
 const error = chalk.bold.red;
 const colour = chalk.keyword('green');
-const bold = chalk.bold;
+const title = chalk.bold;
 
 exports.successlog = (text) => {
     console.log(colour(text));
@@ -17,7 +17,11 @@ exports.errorlog = (err) => {
 }
 
 exports.titlelog = (text) => {
-    console.log(bold(text));
+    console.log(title(text));
+}
+
+exports.loglist = (i, text) => {
+    console.log(`${chalk.magenta(i)} ${text}`);
 }
 
 exports.log = (text) => {
