@@ -38,9 +38,13 @@ exports.readOne = (title) => {
             console.log(title)
             delete line.title;
 
-            for (command in line) {
-                console.log("-", command);
-            }
+            const commands = Object.values(line);
+
+            let i = 1;
+            commands.forEach((command) => {
+                console.log(i, command);
+                i++;
+            });
         }
     });
 }
