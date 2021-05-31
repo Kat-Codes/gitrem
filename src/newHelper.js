@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
-const { writeFile, readFile } = require("./file");
-const { readOne, readAll } = require("./readHelper");
+const { writeFile } = require("./file");
+const { log } = require("./utils/logs");
 
 let i = 1;
 
@@ -22,8 +22,8 @@ exports.newHelper = () => {
             commandLoop(answers);
         })
         .catch((err) => {
-            console.log("Oops! Something went wrong");
-            console.log(err);
+            errlog("Oops! Something went wrong");
+            errlog(err);
         });
 };
 
@@ -47,12 +47,13 @@ const commandLoop = (answers) => {
             }
         })
         .catch((err) => {
-            console.log("Oops! Something went wrong");
-            console.log(err);
+            log("Oops! Something went wrong");
+            errorlog(err);
         });
 };
 
 const saveElements = (answers) => {
     writeFile(JSON.stringify(answers));
-    readOne();
+    // readOne(answers.title);
+    log("Commands saved successfully!")
 }

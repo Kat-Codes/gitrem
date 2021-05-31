@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
-const { readFile } = require("./file")
+const { readFile } = require("./file");
+const { log, errorlog, titlelog } = require("./utils/logs");
 
 
 exports.readAll = () => {
@@ -24,8 +25,8 @@ exports.readAll = () => {
             this.readOne(command.title)
         })
         .catch((err) => {
-            console.log("Oops! Something went wrong");
-            console.log(err);
+            errorlog("Oops! Something went wrong");
+            errorlog(err);
         });
 }
 
@@ -35,14 +36,14 @@ exports.readOne = (title) => {
     data.forEach(line => {
         line = JSON.parse(line);
         if (line.title === title) {
-            console.log(title)
+            titlelog(title)
             delete line.title;
 
             const commands = Object.values(line);
 
             let i = 1;
             commands.forEach((command) => {
-                console.log(i, command);
+                log(i, command);
                 i++;
             });
         }

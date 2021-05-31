@@ -38,7 +38,6 @@ exports.writeFile = (newSequence) => {
 
         function(err) {
             if (err) throw err;
-            console.log('Added new question: "' + newSequence + '"');
         },
     );
 }

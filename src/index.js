@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-
-const chalk = require('chalk')
-const fs = require('fs');
 const { newHelper } = require('./newHelper');
 const { readAll } = require('./readHelper');
+const { errorlog, log } = require('./utils/logs');
   
 const args = process.argv;
   
@@ -22,16 +20,11 @@ const usage = () => {
       help:     used to print the usage guide
     `
 
-    console.log(usageText)
-}
-
-const errorLog = (error) => {
-    const eLog = chalk.red(error)
-    console.log(eLog)
+    log(usageText)
 }
 
 if (args.length > 3) {
-    errorLog(`only one argument can be accepted`)
+    errorlog(`only one argument can be accepted`)
     usage()
 }
 
@@ -46,6 +39,6 @@ switch (args[2]) {
         readAll()
         break
     default:
-        errorLog('invalid command passed')
+        errorlog('invalid command passed')
         usage()
 }
