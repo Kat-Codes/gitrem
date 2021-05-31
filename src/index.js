@@ -42,10 +42,8 @@ switch (args[2]) {
     case 'new':
         newHelper()
         break
-    case 'get':
-        readAll()
-        break
     case 'list':
+        readAll()
         break
     default:
         errorLog('invalid command passed')

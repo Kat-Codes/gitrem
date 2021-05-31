@@ -54,5 +54,5 @@ const commandLoop = (answers) => {
 
 const saveElements = (answers) => {
     writeFile(JSON.stringify(answers));
-    readAll();
+    readOne();
 }
