@@ -3,11 +3,11 @@ const { readFile } = require("./utils/file");
 const { errorlog, titlelog, loglist, log, successlog } = require("./utils/logs");
 
 
-exports.readAll = () => {
+const readAll = () => {
     const data = readFile();
 
     if (!data.length) {
-        log("No commands to read")
+        successlog("No commands to read")
         return;
     }
 
@@ -35,7 +35,7 @@ exports.readAll = () => {
         });
 }
 
-exports.readOne = (title) => {
+const readOne = (title) => {
     const data = readFile();
 
     data.forEach(line => {
@@ -58,3 +58,8 @@ exports.readOne = (title) => {
         }
     });
 }
+
+module.exports = {
+    readOne,
+    readAll
+ }
