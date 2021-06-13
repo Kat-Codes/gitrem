@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const { writeFile } = require("./file");
+const { writeFile } = require("./utils/file");
 const { log } = require("./utils/logs");
 
 let i = 1;
@@ -54,6 +54,5 @@ const commandLoop = (answers) => {
 
 const saveElements = (answers) => {
     writeFile(JSON.stringify(answers));
-    // readOne(answers.title);
     log("Commands saved successfully!")
 }

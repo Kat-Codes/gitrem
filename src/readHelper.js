@@ -1,10 +1,15 @@
 const inquirer = require("inquirer");
-const { readFile } = require("./file");
-const { errorlog, titlelog, loglist, log } = require("./utils/logs");
+const { readFile } = require("./utils/file");
+const { errorlog, titlelog, loglist, log, successlog } = require("./utils/logs");
 
 
 exports.readAll = () => {
     const data = readFile();
+
+    if (!data.length) {
+        log("No commands to read")
+        return;
+    }
 
     const titles = data.map((line) => {
         line = JSON.parse(line);

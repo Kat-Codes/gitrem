@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const { deleteOne } = require('./deleteHelper');
 const { newHelper } = require('./newHelper');
 const { readAll } = require('./readHelper');
 const { errorlog, log } = require('./utils/logs');
@@ -15,8 +16,9 @@ const usage = () => {
       commands can be:
   
       new:      used to create a new sequence
-      get:      used to retrieve your sequence
       list:     used to list all sequences
+      get:      used to retrieve your sequence
+      delete:   used to delete a sequence
       help:     used to print the usage guide
     `
 
@@ -37,6 +39,9 @@ switch (args[2]) {
         break
     case 'list':
         readAll()
+        break
+    case 'delete':
+        deleteOne()
         break
     default:
         errorlog('invalid command passed')

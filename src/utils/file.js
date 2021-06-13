@@ -27,7 +27,7 @@ exports.readFile = () => {
     });
 }
 
-exports.writeFile = (newSequence) => {  
+exports.writeFile = (newSequence) => {
     this.checkFileCreated();
 
     const fileData = fs
@@ -37,8 +37,42 @@ exports.writeFile = (newSequence) => {
         path,
         newSequence + '\n' + fileData,
 
-        function(err) {
+        function (err) {
             if (err) throw err;
         },
     );
+}
+
+exports.deleteLine = (title) => {
+    this.checkFileCreated();
+
+    const data = this.readFile();
+    let newData;
+
+    data.forEach(line => {
+        line = JSON.parse(line);
+
+        if (line.title !== title) {
+            newData = newData + line + '\n';
+        }
+    });
+
+    if (newData) {
+        fs.writeFile(
+            path,
+            JSON.stringify(newData),
+
+            function (err) {
+                if (err) throw err;
+            }
+        )
+    } else {
+        fs.truncate(
+            path,
+            0,
+
+            function (err) {
+                if (err) throw err;
+            })
+    }
 }
