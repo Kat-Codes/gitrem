@@ -1,11 +1,14 @@
-const currentWorkingDirectory = '';
-
+const homedir = require('os').homedir();
 const fs = require('fs');
 
+const directory = homedir + '/.gitrem/';
+const file = 'db.txt';
+const path = directory + file;
+
 exports.checkFileCreated = () => {
-    if (fs.existsSync(currentWorkingDirectory +
-        'gitrem.txt') === false) {
-        let createStream = fs.createWriteStream('gitrem.txt');
+    if (!fs.existsSync(directory)) {
+        fs.mkdirSync(directory);
+        let createStream = fs.createWriteStream(path);
         createStream.end();
     }
 }
@@ -16,8 +19,7 @@ exports.readFile = () => {
     let data = [];
 
     const fileData = fs
-        .readFileSync(currentWorkingDirectory +
-            'gitrem.txt').toString();
+        .readFileSync(path).toString();
 
     data = fileData.split('\n');
     return data.filter(function (value) {
@@ -29,11 +31,10 @@ exports.writeFile = (newSequence) => {
     this.checkFileCreated();
 
     const fileData = fs
-        .readFileSync(currentWorkingDirectory +
-            'gitrem.txt').toString();
+        .readFileSync(path).toString();
 
     fs.writeFile(
-        currentWorkingDirectory + 'gitrem.txt',
+        path,
         newSequence + '\n' + fileData,
 
         function(err) {

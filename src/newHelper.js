@@ -32,7 +32,7 @@ const commandLoop = (answers) => {
         .prompt([
             {
                 name: 'command',
-                message: 'Enter another command (submit empty string to finish)',
+                message: "Enter another command (or 'enter' to finish)",
                 type: 'input'
             }
         ])
