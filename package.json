@@ -1,6 +1,6 @@
 {
   "name": "gitrem",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "a cli helper tool for recalling sequences of git commands",
   "author": "Katie Walker (katcodes.co.uk)",
 

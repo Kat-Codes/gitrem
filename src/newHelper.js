@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const { writeFile } = require("./utils/file");
-const { log } = require("./utils/logs");
+const { log, errorlog } = require("./utils/logs");
 
 let i = 1;
 
@@ -22,8 +22,8 @@ exports.newHelper = () => {
             commandLoop(answers);
         })
         .catch((err) => {
-            errlog("Oops! Something went wrong");
-            errlog(err);
+            errorlog("Oops! Something went wrong");
+            errorlog(err);
         });
 };
 
